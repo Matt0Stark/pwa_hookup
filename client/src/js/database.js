@@ -25,10 +25,10 @@ export const putDb = async (content) => {
   // First, create a variable, and set it to asyncronously await the opening of the database. Replace the items in all caps
   
   // TODO: Change YOUR_OPEN_DB_VAR to whatever variable name you wanT. Note that you'll then need to change any other occcurences of YOUR_OPEN_DB_VAR to the same variable name.
-  const content = await openDB(DB_NAME, 1);
+  const data = await openDB(DB_NAME, 1);
 
   // TODO: Now create a variable for the transaction; again, this will be referenced below.
-  const transact = content.transaction(DB_NAME, 'readwrite');
+  const transact = data.transaction(DB_NAME, 'readwrite');
 
   // TODO: Now create a variable for the store
   const store = transact.objectStore(DB_NAME);
@@ -41,11 +41,11 @@ export const putDb = async (content) => {
 /*
   We need to add some code below which will get all content from IndexedDB.
 */
-export const getDb = async (content) => {
+export const getDb = async () => {
   // You can duplicate the same lines of code from above, except that the transaction will be 'readonly'
-  const content = await openDB(DB_NAME, 1);
-  const transact = content.transaction(DB_NAME, 'readonly');
-  const content = await openDB(DB_NAME, 1);
+  const data = await openDB(DB_NAME, 1);
+  const transact = data.transaction(DB_NAME, 'readonly');
+  const store = await openDB(DB_NAME, 1);
 
   // TODO: Copy LINES 28, 31 and 34 above; the new line 31 code should be "readonly"
 
